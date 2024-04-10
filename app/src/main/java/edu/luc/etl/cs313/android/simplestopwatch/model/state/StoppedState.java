@@ -15,13 +15,6 @@ class StoppedState implements StopwatchState {
         sm.actionStart();
         sm.toRunningState();
     }
-
-    @Override
-    public void onLapReset() {
-        sm.actionReset();
-        sm.toStoppedState();
-    }
-
     @Override
     public void onTick() {
         throw new UnsupportedOperationException("onTick");

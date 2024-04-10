@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import android.widget.Button;
@@ -115,7 +114,7 @@ public abstract class AbstractStopwatchActivityTest {
     }
 
     protected Button getStartStopButton() {
-        return getActivity().findViewById(R.id.startStop);
+        return getActivity().findViewById(R.id.Increment);
     }
 
     protected Button getResetLapButton() {
