@@ -11,9 +11,8 @@ class IncrementingState implements StopwatchState {
     private final StopwatchSMStateView sm;
 
     @Override
-    public void onStartStop() {
-        sm.actionStop();
-        sm.toIncrementingState();
+    public void onButtonPress() {
+        sm.actionStart();
     }
 
     @Override
@@ -23,7 +22,7 @@ class IncrementingState implements StopwatchState {
 
     @Override
     public void updateView() {
-        sm.updateUILaptime();
+            sm.updateUIRuntime();
     }
 
     @Override
