@@ -27,6 +27,7 @@ public abstract class AbstractTimeModelTest {
      *
      * @param model
      */
+
     protected void setModel(final TimeModel model) {
         this.model = model;
     }
@@ -47,7 +48,7 @@ public abstract class AbstractTimeModelTest {
     public void testIncrementRuntimeOne() {
         final var rt = model.getRuntime();
         final var lt = model.getLaptime();
-        model.incRuntime();
+        model.decRuntime();
         assertEquals((rt + SEC_PER_TICK) % SEC_PER_MIN, model.getRuntime());
         assertEquals(lt, model.getLaptime());
     }
@@ -60,7 +61,7 @@ public abstract class AbstractTimeModelTest {
         final int rt = model.getRuntime();
         final int lt = model.getLaptime();
         for (int i = 0; i < SEC_PER_HOUR; i ++) {
-            model.incRuntime();
+            model.decRuntime();
         }
         assertEquals(rt, model.getRuntime());
         assertEquals(lt, model.getLaptime());
@@ -74,14 +75,14 @@ public abstract class AbstractTimeModelTest {
         final var rt = model.getRuntime();
         final var lt = model.getLaptime();
         for (var i = 0; i < 5; i ++) {
-            model.incRuntime();
+            model.decRuntime();
         }
         assertEquals(rt + 5, model.getRuntime());
         assertEquals(lt, model.getLaptime());
         model.setLaptime();
         assertEquals(rt + 5, model.getLaptime());
         for (var i = 0; i < 5; i ++) {
-            model.incRuntime();
+            model.decRuntime();
         }
         assertEquals(rt + 10, model.getRuntime());
         assertEquals(rt + 5, model.getLaptime());
