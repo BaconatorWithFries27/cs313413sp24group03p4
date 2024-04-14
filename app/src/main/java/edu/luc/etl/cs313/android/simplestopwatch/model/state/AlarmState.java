@@ -11,7 +11,7 @@ class AlarmState implements StopwatchState {
     private final StopwatchSMStateView sm;
 
     @Override
-    public void onStartStop() {
+    public void onButtonPress() {
         sm.actionStart();
         sm.toIncrementingState();
     }
@@ -23,7 +23,7 @@ class AlarmState implements StopwatchState {
 
     @Override
     public void updateView() {
-        sm.updateUILaptime();
+        sm.toAlarmState();
     }
 
     @Override
