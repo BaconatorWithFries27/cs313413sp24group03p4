@@ -23,11 +23,12 @@ class AlarmState implements StopwatchState {
 
     @Override
     public void updateView() {
-        sm.toAlarmState();
+
     }
 
     @Override
     public int getId() {
         return R.string.LAP_STOPPED;
     }
+
 }

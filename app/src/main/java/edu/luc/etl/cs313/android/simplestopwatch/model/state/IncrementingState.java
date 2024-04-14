@@ -10,24 +10,28 @@ class IncrementingState implements StopwatchState {
 
     private final StopwatchSMStateView sm;
 
+    int tickCountToRunning = 0;
     @Override
-    public void onStartStop() {
-        sm.actionStop();
-        sm.toIncrementingState();
+    public void onButtonPress() {
+        sm.actionStart();
+        tickCountToRunning = 0;
     }
+
 
     @Override
     public void onTick() {
-        sm.actionInc();
+        //sm.actionInc();
+        tickCountToRunning++;
+        if (tickCountToRunning == 3) {sm.toRunningState();}
     }
 
     @Override
     public void updateView() {
-        sm.updateUILaptime();
+            sm.updateUIRuntime();
     }
 
     @Override
     public int getId() {
-        return R.string.LAP_RUNNING;
+        return R.string.INCREMENTING;
     }
 }
