@@ -7,6 +7,7 @@ package edu.luc.etl.cs313.android.simplestopwatch.model.state;
  * @author laufer
  */
 interface StopwatchSMStateView {
+    int getTime();
 
     // transitions
     void toRunningState();

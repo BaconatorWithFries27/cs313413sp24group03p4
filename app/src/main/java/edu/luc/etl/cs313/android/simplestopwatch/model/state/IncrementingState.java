@@ -14,7 +14,12 @@ class IncrementingState implements StopwatchState {
     @Override
     public void onButtonPress() {
         sm.actionStart();
-        tickCountToRunning = 0;
+        if(sm.getTime() == 99) {
+            sm.toRunningState();
+        }
+        else {
+            tickCountToRunning = 0;
+        }
     }
 
 

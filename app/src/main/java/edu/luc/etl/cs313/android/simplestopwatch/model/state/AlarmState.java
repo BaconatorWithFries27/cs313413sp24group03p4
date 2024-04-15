@@ -13,7 +13,7 @@ class AlarmState implements StopwatchState {
     @Override
     public void onButtonPress() {
         sm.actionStart();
-        sm.toIncrementingState();
+        sm.toStoppedState();
     }
 
     @Override
