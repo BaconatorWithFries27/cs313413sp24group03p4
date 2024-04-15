@@ -12,13 +12,13 @@ class AlarmState implements StopwatchState {
 
     @Override
     public void onButtonPress() {
-        sm.actionStart();
+        //sm.actionStart();
         sm.toStoppedState();
     }
 
     @Override
     public void onTick() {
-        throw new UnsupportedOperationException("onTick");
+        /*throw new UnsupportedOperationException("onTick");*/
     }
 
     @Override
@@ -28,7 +28,7 @@ class AlarmState implements StopwatchState {
 
     @Override
     public int getId() {
-        return R.string.LAP_STOPPED;
+        return R.string.ALARM;
     }
 
 }
