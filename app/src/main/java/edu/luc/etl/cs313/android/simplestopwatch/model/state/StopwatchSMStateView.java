@@ -21,6 +21,7 @@ interface StopwatchSMStateView {
     void actionStop();
     void actionInc();
     void actionUpdateView();
+    void actionReset();
 
     // state-dependent UI updates
     void updateUIRuntime();

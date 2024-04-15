@@ -25,7 +25,6 @@ class IncrementingState implements StopwatchState {
 
     @Override
     public void onTick() {
-        //sm.actionInc();
         tickCountToRunning++;
         if (tickCountToRunning == 3) {sm.toRunningState();}
     }

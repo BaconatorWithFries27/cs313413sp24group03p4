@@ -1,5 +1,6 @@
 package edu.luc.etl.cs313.android.simplestopwatch.model.state;
 
+import android.media.MediaPlayer;
 import edu.luc.etl.cs313.android.simplestopwatch.R;
 
 class RunningState implements StopwatchState {
@@ -13,7 +14,8 @@ class RunningState implements StopwatchState {
     @Override
     public void onButtonPress() {
         sm.actionStop();
-        sm.toStoppedState();
+        sm.actionInit();
+
     }
 
     @Override
@@ -21,6 +23,8 @@ class RunningState implements StopwatchState {
         sm.actionInc();
         if (sm.getTime() == 0) {
             sm.toAlarmState();
+            //MediaPlayer mediaPlayer = MediaPlayer.create(null,R.raw.beep);
+            //mediaPlayer.start();
         }
         else {
             sm.toRunningState();
