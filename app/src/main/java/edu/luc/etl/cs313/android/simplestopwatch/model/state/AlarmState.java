@@ -17,18 +17,15 @@ import android.widget.TextView;
 import java.io.IOException;
 
 
-class AlarmState extends MediaPlayer implements StopwatchState {
+class AlarmState extends Activity implements StopwatchState {
 
     public AlarmState(final StopwatchSMStateView sm) {
         this.sm = sm;
-        //MediaPlayer mediaPlayer = MediaPlayer.create(, R.raw.beep);
-        // mediaPlayer.start();
-        this.playAlarmSound();
-
-
+        playAlarmSound();
     }
 
     private final StopwatchSMStateView sm;
+
 
     // RJ: This method is mainly ripped from ClickCounter (https://github.com/LoyolaChicagoCode/clickcounter-android-java)
     // RJ: I don't think this is the right sounds, but my andriod studio is tweaking nad I can't test :|
@@ -55,6 +52,7 @@ class AlarmState extends MediaPlayer implements StopwatchState {
     public void onButtonPress() {
         sm.actionStop();
         sm.actionInit();
+
     }
 
     @Override
