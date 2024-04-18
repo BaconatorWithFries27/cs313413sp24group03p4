@@ -48,6 +48,7 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
         this.setModel(new ConcreteStopwatchModelFacade());
         // inject dependency on this into model to register for UI updates
         model.setModelListener(this);
+
     }
 
     @Override

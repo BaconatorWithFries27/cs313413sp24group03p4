@@ -23,7 +23,7 @@ class AlarmState extends Activity implements StopwatchState {
 
     public AlarmState(final StopwatchSMStateView sm) {
         this.sm = sm;
-        //StopwatchAdapter.playAlarmSound();
+
     }
 
     private final StopwatchSMStateView sm;
@@ -38,7 +38,7 @@ class AlarmState extends Activity implements StopwatchState {
 
     @Override
     public void onTick() {
-        /*throw new UnsupportedOperationException("onTick");*/
+       sm.playAlarmSound();
     }
 
     @Override

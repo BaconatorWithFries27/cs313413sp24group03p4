@@ -20,7 +20,7 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
 
     private final ClockModel clockModel;
 
-    private int time;
+
 
     /**
      * The internal state of this adapter component. Required for the State pattern.
@@ -47,6 +47,8 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
 
     @Override public void updateUIRuntime() { listener.onTimeUpdate(timeModel.getRuntime()); }
 
+    public void updateUIListener() {listener.playAlarmSound();}
+
     @Override public int getTime(){ return timeModel.getRuntime();}
     // known states
 
@@ -68,4 +70,6 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
     @Override public void actionStop()       { clockModel.stop(); }
     @Override public void actionInc()        { timeModel.decRuntime(); actionUpdateView(); }
     @Override public void actionUpdateView() { state.updateView(); }
+
+    @Override public void playAlarmSound() {listener.playAlarmSound();}
 }
