@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.app.Activity;
 import android.net.Uri;
 import android.media.AudioAttributes;
 import android.content.Context;
@@ -108,6 +107,9 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
             final TextView stateName = findViewById(R.id.stateName);
             stateName.setText(getString(stateId));
         });
+        if (stateId == R.string.ALARM) {
+            playAlarmSound();
+        }
     }
 
     // forward event listener methods to the model
