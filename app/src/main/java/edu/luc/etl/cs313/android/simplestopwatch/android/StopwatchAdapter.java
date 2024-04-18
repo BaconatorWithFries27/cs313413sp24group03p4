@@ -70,6 +70,26 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
         });
     }
 
+    // RJ: This class is the activity, so Alarm State needs to call this somehow
+    protected void playAlarmSound() {
+        final Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        final MediaPlayer mediaPlayer = new MediaPlayer();
+        final Context context = getApplicationContext();
+
+        try {
+            mediaPlayer.setDataSource(context, defaultRingtoneUri);
+            mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build());
+            mediaPlayer.prepare();
+            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
+            mediaPlayer.start();
+        } catch (final IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
     /**
      * Updates the state name in the UI.
      * @param stateId
