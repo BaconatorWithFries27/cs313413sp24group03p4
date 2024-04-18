@@ -4,6 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.app.Activity;
+import android.net.Uri;
+import android.media.AudioAttributes;
+import android.content.Context;
+import android.media.RingtoneManager;
+import java.io.IOException;
+import android.media.MediaPlayer;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -71,7 +78,7 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
     }
 
     // RJ: This class is the activity, so Alarm State needs to call this somehow
-    protected void playAlarmSound() {
+    public void playAlarmSound() {
         final Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         final MediaPlayer mediaPlayer = new MediaPlayer();
         final Context context = getApplicationContext();

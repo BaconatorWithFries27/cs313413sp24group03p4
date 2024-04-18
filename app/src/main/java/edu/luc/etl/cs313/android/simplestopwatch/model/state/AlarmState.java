@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
+import edu.luc.etl.cs313.android.simplestopwatch.android.StopwatchAdapter;
+
 import java.io.IOException;
 
 
@@ -21,32 +23,11 @@ class AlarmState extends Activity implements StopwatchState {
 
     public AlarmState(final StopwatchSMStateView sm) {
         this.sm = sm;
-        playAlarmSound();
+        //StopwatchAdapter.playAlarmSound();
     }
 
     private final StopwatchSMStateView sm;
 
-
-    // RJ: This method is mainly ripped from ClickCounter (https://github.com/LoyolaChicagoCode/clickcounter-android-java)
-    // RJ: I don't think this is the right sounds, but my andriod studio is tweaking nad I can't test :|
-    protected void playAlarmSound() {
-        final Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        final MediaPlayer mediaPlayer = new MediaPlayer();
-        final Context context = getApplicationContext();
-
-        try {
-            mediaPlayer.setDataSource(context, defaultRingtoneUri);
-            mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ALARM)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build());
-            mediaPlayer.prepare();
-            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
-            mediaPlayer.start();
-        } catch (final IOException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
 
     @Override
     public void onButtonPress() {
