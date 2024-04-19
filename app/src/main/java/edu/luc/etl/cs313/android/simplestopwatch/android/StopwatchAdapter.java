@@ -107,9 +107,9 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
             final TextView stateName = findViewById(R.id.stateName);
             stateName.setText(getString(stateId));
         });
-        if (stateId == R.string.ALARM) {
+        /*if (stateId == R.string.ALARM) {
             playAlarmSound();
-        }
+        }*/
     }
 
     // forward event listener methods to the model
