@@ -11,5 +11,6 @@ public enum Constants {
     public static final int SEC_PER_MIN = 60;
     public static final int SEC_PER_HOUR = 3600;
     public static final int MAX_TIME = 99;
+    public static final int MAX_CLOCK_SETTING = 100;
 
 }

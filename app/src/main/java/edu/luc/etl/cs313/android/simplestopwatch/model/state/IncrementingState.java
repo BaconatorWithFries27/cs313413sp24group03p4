@@ -15,6 +15,7 @@ class IncrementingState implements StopwatchState {
     public void onButtonPress() {
         sm.actionStart();
         if(sm.getTime() == 99) {
+            sm.playAlarmSound();
             sm.toRunningState();
         }
         else {
@@ -26,7 +27,7 @@ class IncrementingState implements StopwatchState {
     @Override
     public void onTick() {
         tickCountToRunning++;
-        if (tickCountToRunning == 3) {sm.toRunningState();}
+        if (tickCountToRunning == 3) {sm.playAlarmSound(); sm.toRunningState();}
     }
 
     @Override
