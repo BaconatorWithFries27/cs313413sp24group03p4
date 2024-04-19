@@ -76,7 +76,10 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
             tvS.setText(String.format(locale,"%02d", time % Constants.MAX_CLOCK_SETTING));
         });
     }
-
+    /**
+     * Sets up the media player to be used for the alarm
+     *
+     */
     // RJ: This class is the activity, so Alarm State needs to call this somehow
     public void playAlarmSound() {
         final Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
