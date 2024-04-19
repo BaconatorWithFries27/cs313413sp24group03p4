@@ -8,25 +8,6 @@ class AlarmState implements StopwatchState {
         this.sm = sm;
 
     }
-
-    /*public void playAlarmSound() {
-        final Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        final MediaPlayer mediaPlayer = new MediaPlayer();
-        final Context context = StopwatchAdapter.getContext();
-
-        try {
-            mediaPlayer.setDataSource(context, defaultRingtoneUri);
-            mediaPlayer.setAudioAttributes(new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ALARM)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build());
-            mediaPlayer.prepare();
-            mediaPlayer.setOnCompletionListener(MediaPlayer::release);
-            mediaPlayer.start();
-        } catch (final IOException ex) {
-            throw new RuntimeException(ex);
-        }
-    }*/
     private final StopwatchSMStateView sm;
 
 
