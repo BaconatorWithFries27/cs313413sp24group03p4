@@ -62,7 +62,7 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
         model.start();
     }
 
-    // TODO remaining lifecycle methods
+
 
     /**
      * Updates the seconds and minutes in the UI.
