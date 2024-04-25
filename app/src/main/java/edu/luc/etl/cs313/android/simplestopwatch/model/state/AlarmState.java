@@ -8,7 +8,6 @@ class AlarmState implements StopwatchState {
         this.sm = sm;
 
     }
-
     private final StopwatchSMStateView sm;
 
 
