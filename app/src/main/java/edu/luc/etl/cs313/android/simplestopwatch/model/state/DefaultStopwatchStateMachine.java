@@ -1,5 +1,6 @@
 package edu.luc.etl.cs313.android.simplestopwatch.model.state;
 
+import edu.luc.etl.cs313.android.simplestopwatch.R;
 import edu.luc.etl.cs313.android.simplestopwatch.common.StopwatchModelListener;
 import edu.luc.etl.cs313.android.simplestopwatch.model.clock.ClockModel;
 import edu.luc.etl.cs313.android.simplestopwatch.model.time.TimeModel;
@@ -66,10 +67,24 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
     // actions
     @Override public void actionInit()       { toStoppedState(); actionReset(); }
     public void actionReset()      { timeModel.resetRuntime(); actionUpdateView(); }
-    @Override public void actionStart()      { timeModel.addRunTime(); actionUpdateView(); }
+    @Override public void actionStart()      {
+        if (R.id.enterTime != 2130837512) {
+            int time = R.id.enterTime;
+        manualTime(time);
+        toRunningState();
+        actionUpdateView();
+        } else {
+            timeModel.addRunTime();
+            actionUpdateView();
+        }
+    }
     @Override public void actionStop()       { clockModel.stop(); }
     @Override public void actionInc()        { timeModel.decRuntime(); actionUpdateView(); }
     @Override public void actionUpdateView() { state.updateView(); }
 
     @Override public void playAlarmSound() {listener.playAlarmSound();}
+
+    public void manualTime(int time) {
+        timeModel.setTime(time);
+    }
 }

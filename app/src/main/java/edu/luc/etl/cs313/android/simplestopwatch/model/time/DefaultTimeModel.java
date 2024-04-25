@@ -27,4 +27,8 @@ public class DefaultTimeModel implements TimeModel {
     public int getRuntime() {
         return runningTime;
     }
+
+    public void setTime(int time) {
+        this.runningTime = time;
+    }
 }

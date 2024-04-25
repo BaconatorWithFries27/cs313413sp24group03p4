@@ -14,6 +14,7 @@ class StoppedState implements StopwatchState {
     public void onButtonPress() {
         sm.actionStart();
         sm.toIncrementingState();
+
     }
     @Override
     public void onTick() {
