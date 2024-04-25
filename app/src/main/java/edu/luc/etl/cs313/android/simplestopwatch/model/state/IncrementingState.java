@@ -27,6 +27,7 @@ class IncrementingState implements StopwatchState {
     @Override
     public void onTick() {
         tickCountToRunning++;
+        //if three seconds have passed, play alarm and begin decrementing
         if (tickCountToRunning == 3) {sm.playAlarmSound(); sm.toRunningState();}
     }
 

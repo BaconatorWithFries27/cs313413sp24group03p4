@@ -21,10 +21,9 @@ class RunningState implements StopwatchState {
     @Override
     public void onTick() {
         sm.actionInc();
+        //When done decrementing, play alarm and go to alarm state
         if (sm.getTime() == 0) {
             sm.toAlarmState();
-            //MediaPlayer mediaPlayer = MediaPlayer.create(null,R.raw.beep);
-            //mediaPlayer.start();
         }
         else {
             sm.toRunningState();

@@ -47,7 +47,6 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
 
     @Override public void updateUIRuntime() { listener.onTimeUpdate(timeModel.getRuntime()); }
 
-    public void updateUIListener() {listener.playAlarmSound();}
 
     @Override public int getTime(){ return timeModel.getRuntime();}
     // known states
