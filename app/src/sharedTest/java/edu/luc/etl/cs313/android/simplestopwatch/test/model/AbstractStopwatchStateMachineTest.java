@@ -211,4 +211,6 @@ class UnifiedMockDependency implements TimeModel, ClockModel, StopwatchModelList
     @Override
     public void addRunTime(){}
 
+    public void setTime(int time){}
+
 }

@@ -23,8 +23,6 @@ class RunningState implements StopwatchState {
         sm.actionInc();
         if (sm.getTime() == 0) {
             sm.toAlarmState();
-            //MediaPlayer mediaPlayer = MediaPlayer.create(null,R.raw.beep);
-            //mediaPlayer.start();
         }
         else {
             sm.toRunningState();

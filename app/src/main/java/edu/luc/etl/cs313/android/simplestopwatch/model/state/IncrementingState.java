@@ -9,12 +9,11 @@ class IncrementingState implements StopwatchState {
     }
 
     private final StopwatchSMStateView sm;
-
     int tickCountToRunning = 0;
     @Override
     public void onButtonPress() {
         sm.actionStart();
-        if(sm.getTime() == 99) {
+        if(sm.getTime() > 99) {
             sm.playAlarmSound();
             sm.toRunningState();
         }

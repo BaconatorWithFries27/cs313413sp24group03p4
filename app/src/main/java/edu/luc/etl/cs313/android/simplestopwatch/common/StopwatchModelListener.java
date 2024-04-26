@@ -11,4 +11,8 @@ public interface StopwatchModelListener {
     void onTimeUpdate(int timeValue);
     void onStateUpdate(int stateId);
     void playAlarmSound();
+
+    int getUserNum();
+
+
 }

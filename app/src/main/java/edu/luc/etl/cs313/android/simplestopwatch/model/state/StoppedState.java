@@ -1,6 +1,9 @@
 package edu.luc.etl.cs313.android.simplestopwatch.model.state;
 
 import edu.luc.etl.cs313.android.simplestopwatch.R;
+import android.widget.EditText;
+
+
 
 class StoppedState implements StopwatchState {
 
@@ -12,8 +15,17 @@ class StoppedState implements StopwatchState {
 
     @Override
     public void onButtonPress() {
-        sm.actionStart();
-        sm.toIncrementingState();
+        
+        int time = sm.manualTime();
+        if (time == -5000) {
+            sm.actionStart();
+            sm.toIncrementingState();
+        } else {
+            sm.userInputTime(time);
+            updateView();
+            sm.playAlarmSound();
+            sm.toRunningState();
+        }
 
     }
     @Override
@@ -30,4 +42,5 @@ class StoppedState implements StopwatchState {
     public int getId() {
         return R.string.STOPPED;
     }
+
 }
