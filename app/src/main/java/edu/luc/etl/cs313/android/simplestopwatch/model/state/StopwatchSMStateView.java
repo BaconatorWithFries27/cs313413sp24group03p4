@@ -30,4 +30,6 @@ interface StopwatchSMStateView {
 
     int manualTime();
     void userInputTime(int time);
+
+    void startClock();
 }

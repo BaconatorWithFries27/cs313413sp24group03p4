@@ -59,6 +59,7 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
 
     // transitions
     @Override public void toRunningState()    { setState(RUNNING); }
+    @Override public void startClock() { clockModel.start(); }
     @Override public void toStoppedState()    { setState(STOPPED); }
     @Override public void toIncrementingState() { setState(INCREMENTING); clockModel.start(); }
     @Override public void toAlarmState() { setState(ALARM); }
@@ -70,6 +71,9 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
     @Override public void actionStop()       { clockModel.stop(); }
     @Override public void actionInc()        { timeModel.decRuntime(); actionUpdateView(); }
     @Override public void actionUpdateView() { state.updateView(); }
+
+
+
 
     @Override public void playAlarmSound() {listener.playAlarmSound();}
 

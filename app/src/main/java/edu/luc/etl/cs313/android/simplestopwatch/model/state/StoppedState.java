@@ -25,6 +25,7 @@ class StoppedState implements StopwatchState {
             updateView();
             sm.playAlarmSound();
             sm.toRunningState();
+            sm.startClock();
         }
 
     }
