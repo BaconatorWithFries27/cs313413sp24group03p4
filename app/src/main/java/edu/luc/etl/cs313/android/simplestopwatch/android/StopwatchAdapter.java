@@ -34,7 +34,7 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
      * The state-based dynamic model.
      */
     private StopwatchModelFacade model;
-    int intValue = 0;
+
 
     protected void setModel(final StopwatchModelFacade model) {
         this.model = model;
@@ -124,10 +124,11 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
 
         EditText myEditText = (EditText)findViewById(R.id.enterTime);
         String stringValue = myEditText.getText().toString();
-        if (stringValue.equals("")) {
+        if (stringValue.isEmpty()) {
             return -5000;
         } else {
-            intValue = Integer.parseInt(stringValue);
+            int intValue = Integer.parseInt(stringValue);
+            if (intValue > Constants.MAX_TIME) {intValue = 99;} //clamp value at max time value
             return intValue;
         }
     }

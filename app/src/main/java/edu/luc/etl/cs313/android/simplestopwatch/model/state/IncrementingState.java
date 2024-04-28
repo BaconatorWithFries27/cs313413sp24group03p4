@@ -1,6 +1,7 @@
 package edu.luc.etl.cs313.android.simplestopwatch.model.state;
 
 import edu.luc.etl.cs313.android.simplestopwatch.R;
+import edu.luc.etl.cs313.android.simplestopwatch.common.Constants;
 
 class IncrementingState implements StopwatchState {
 
@@ -13,7 +14,7 @@ class IncrementingState implements StopwatchState {
     @Override
     public void onButtonPress() {
         sm.actionStart();
-        if(sm.getTime() > 99) {
+        if(sm.getTime() == Constants.MAX_TIME) {
             sm.playAlarmSound();
             sm.toRunningState();
         }
