@@ -15,8 +15,9 @@ class StoppedState implements StopwatchState {
 
     @Override
     public void onButtonPress() {
-        //Depending on user number entry, can go to either incrementing or running state. Call statemachine / forward to adapter to check
-        // if the user entered a number. -5000 is sentinel value if user entered no number in UI.
+        // Depending on user number entry, can go to either incrementing or running state.
+        // Call statemachine / forward to adapter to check if the user entered a number.
+        // -5000 is sentinel value if user entered no number in UI.
         
         int time = sm.manualTime();
         if (time == Constants.UI_SENTINEL) {
