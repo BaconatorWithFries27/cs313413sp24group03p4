@@ -13,4 +13,6 @@ public enum Constants {
     public static final int MAX_TIME = 99;
     public static final int MAX_CLOCK_SETTING = 100;
 
+    public static final int UI_SENTINEL = -5000;
+
 }

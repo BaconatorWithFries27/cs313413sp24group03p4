@@ -2,7 +2,7 @@ package edu.luc.etl.cs313.android.simplestopwatch.model.state;
 
 import edu.luc.etl.cs313.android.simplestopwatch.R;
 import android.widget.EditText;
-
+import edu.luc.etl.cs313.android.simplestopwatch.common.Constants;
 
 
 class StoppedState implements StopwatchState {
@@ -15,9 +15,11 @@ class StoppedState implements StopwatchState {
 
     @Override
     public void onButtonPress() {
+        //Depending on user number entry, can go to either incrementing or running state. Call statemachine / forward to adapter to check
+        // if the user entered a number. -5000 is sentinel value if user entered no number in UI.
         
         int time = sm.manualTime();
-        if (time == -5000) {
+        if (time == Constants.UI_SENTINEL) {
             sm.actionStart();
             sm.toIncrementingState();
         } else {

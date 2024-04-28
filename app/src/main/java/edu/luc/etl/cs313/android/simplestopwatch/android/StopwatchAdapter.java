@@ -82,7 +82,6 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
      * Sets up the media player to be used for the alarm
      *
      */
-    // RJ: This class is the activity, so Alarm State needs to call this somehow
     public void playAlarmSound() {
         final Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         final MediaPlayer mediaPlayer = new MediaPlayer();
@@ -119,16 +118,18 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
         model.onButtonPress();
     }
 
+    // Get number from UI using EditText Object. If empty set sentinel value to -5000 so stopped state can apply correct state transition.
+    // Ensure that UI time is <= MAX_TIME.
     @Override
     public int getUserNum(){
 
         EditText myEditText = (EditText)findViewById(R.id.enterTime);
         String stringValue = myEditText.getText().toString();
         if (stringValue.isEmpty()) {
-            return -5000;
+            return Constants.UI_SENTINEL;
         } else {
             int intValue = Integer.parseInt(stringValue);
-            if (intValue > Constants.MAX_TIME) {intValue = 99;} //clamp value at max time value
+            if (intValue > Constants.MAX_TIME) {intValue = Constants.MAX_TIME;}
             return intValue;
         }
     }

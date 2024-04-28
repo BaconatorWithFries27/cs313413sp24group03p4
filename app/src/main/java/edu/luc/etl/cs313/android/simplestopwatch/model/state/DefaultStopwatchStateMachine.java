@@ -79,6 +79,7 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
 
     public void userInputTime(int time){ timeModel.setTime(time); }
 
+    //Forward call from stopped state to adapter to get UI number (if any)
     public int manualTime() {
         int time = listener.getUserNum();
         return time;
