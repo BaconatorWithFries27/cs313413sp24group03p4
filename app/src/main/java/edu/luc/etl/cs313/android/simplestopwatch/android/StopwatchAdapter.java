@@ -10,6 +10,7 @@ import android.content.Context;
 import android.media.RingtoneManager;
 import java.io.IOException;
 import android.media.MediaPlayer;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -33,6 +34,7 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
      * The state-based dynamic model.
      */
     private StopwatchModelFacade model;
+    int intValue = 0;
 
     protected void setModel(final StopwatchModelFacade model) {
         this.model = model;
@@ -110,12 +112,24 @@ public class StopwatchAdapter extends Activity implements StopwatchModelListener
             final TextView stateName = findViewById(R.id.stateName);
             stateName.setText(getString(stateId));
         });
-
     }
 
     // forward event listener methods to the model
     public void onStartStop(final View view) {
         model.onButtonPress();
+    }
+
+    @Override
+    public int getUserNum(){
+
+        EditText myEditText = (EditText)findViewById(R.id.enterTime);
+        String stringValue = myEditText.getText().toString();
+        if (stringValue.equals("")) {
+            return -5000;
+        } else {
+            intValue = Integer.parseInt(stringValue);
+            return intValue;
+        }
     }
 
 }

@@ -53,40 +53,52 @@ public abstract class AbstractStopwatchActivityTest {
             for (int i = 0; i < 3; i++) {
                 assertTrue(getStartStopButton().performClick());
             }
-        });
-        getActivity().runOnUiThread(() -> {
             assertEquals(3, getDisplayedValue());
-            assertTrue(getStartStopButton().performClick());
         });
     }
 
     @Test
-    public void testActivityScenarioRun() throws Throwable {
+    public void testActivityScenarioTimeoutRun() throws Throwable {
 
         getActivity().runOnUiThread(() -> {
-
             assertEquals(0, getDisplayedValue());
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 5; i++) {
                 assertTrue(getStartStopButton().performClick());
             }
-            assertEquals(3, getDisplayedValue());
-            //assertTrue(getStartStopButton().performClick());
-            long startTime = System.currentTimeMillis();
-            long endTime = startTime + 4500;
-            while(System.currentTimeMillis() < endTime) {System.out.print("");}
-
+            assertEquals(5, getDisplayedValue());
         });
 
-        //long startTime = System.currentTimeMillis();
-        //long endTime = startTime + 4500;
-        //while(System.currentTimeMillis() < endTime) {}
 
-        //Thread.sleep(4200); // <-- do not run this in the UI thread!
-        //runUiThreadTasks();
+        Thread.sleep(4200); // <-- do not run this in the UI thread!
+        runUiThreadTasks();
+        getActivity().runOnUiThread(() -> {
+            assertEquals(4, getDisplayedValue());
+
+        });
+    }
+    @Test
+    public void testActivityScenarioRunNinetyNine() throws Throwable {
+
         //getActivity().runOnUiThread(() -> {
-            assertEquals(2, getDisplayedValue());
+
+            assertEquals(0, getDisplayedValue());
+            for (int i = 0; i < 99; i++) {
+                assertTrue(getStartStopButton().performClick());
+            }
+            assertEquals(99, getDisplayedValue());
+            //long currTime = System.currentTimeMillis();
+            //long endTime = currTime + 5000;
+            //while(currTime < endTime) {
+                //currTime = System.currentTimeMillis();
+            //}
+        Thread.sleep(5000);
+
+            assertEquals(97, getDisplayedValue());
             assertTrue(getStartStopButton().performClick());
-        //});
+
+       // });
+
+
     }
 
     /**
@@ -113,10 +125,6 @@ public abstract class AbstractStopwatchActivityTest {
     protected Button getStartStopButton() {
         return getActivity().findViewById(R.id.Increment);
     }
-
-    /*protected Button getResetLapButton() {
-        //return getActivity().findViewById(R.id.resetLap);
-    }*/
 
     /**
      * Explicitly runs tasks scheduled to run on the UI thread in case this is required

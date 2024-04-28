@@ -4,6 +4,7 @@ import edu.luc.etl.cs313.android.simplestopwatch.common.StopwatchModelListener;
 import edu.luc.etl.cs313.android.simplestopwatch.model.clock.ClockModel;
 import edu.luc.etl.cs313.android.simplestopwatch.model.time.TimeModel;
 
+
 /**
  * An implementation of the state machine for the stopwatch.
  *
@@ -47,8 +48,8 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
 
     @Override public void updateUIRuntime() { listener.onTimeUpdate(timeModel.getRuntime()); }
 
-
     @Override public int getTime(){ return timeModel.getRuntime();}
+
     // known states
 
     private final StopwatchState STOPPED      = new StoppedState(this);
@@ -58,6 +59,7 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
 
     // transitions
     @Override public void toRunningState()    { setState(RUNNING); }
+    @Override public void startClock() { clockModel.start(); }
     @Override public void toStoppedState()    { setState(STOPPED); }
     @Override public void toIncrementingState() { setState(INCREMENTING); clockModel.start(); }
     @Override public void toAlarmState() { setState(ALARM); }
@@ -65,10 +67,20 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
     // actions
     @Override public void actionInit()       { toStoppedState(); actionReset(); }
     public void actionReset()      { timeModel.resetRuntime(); actionUpdateView(); }
-    @Override public void actionStart()      { timeModel.addRunTime(); actionUpdateView(); }
+    @Override public void actionStart()      {timeModel.addRunTime(); actionUpdateView(); }
     @Override public void actionStop()       { clockModel.stop(); }
     @Override public void actionInc()        { timeModel.decRuntime(); actionUpdateView(); }
     @Override public void actionUpdateView() { state.updateView(); }
 
+
+
+
     @Override public void playAlarmSound() {listener.playAlarmSound();}
+
+    public void userInputTime(int time){ timeModel.setTime(time); }
+
+    public int manualTime() {
+        int time = listener.getUserNum();
+        return time;
+    }
 }

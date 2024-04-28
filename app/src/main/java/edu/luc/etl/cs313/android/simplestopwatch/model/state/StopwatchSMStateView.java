@@ -28,4 +28,8 @@ interface StopwatchSMStateView {
     void onButtonPress();
     void playAlarmSound();
 
+    int manualTime();
+    void userInputTime(int time);
+
+    void startClock();
 }

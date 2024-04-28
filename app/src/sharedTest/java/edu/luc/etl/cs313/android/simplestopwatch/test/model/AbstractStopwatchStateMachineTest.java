@@ -89,8 +89,9 @@ public abstract class AbstractStopwatchStateMachineTest {
      *
      * @throws Throwable
      */
-    @Test
-    public void testScenarioRunLapReset() {
+    //omitted due to laps being removed
+    //@Test
+    /*public void testScenarioRunLapReset() {
         assertTimeEquals(0);
         assertFalse(dependency.isStarted());
         // directly invoke the button press event handler methods
@@ -116,7 +117,7 @@ public abstract class AbstractStopwatchStateMachineTest {
         assertEquals(R.string.STOPPED, dependency.getState());
         assertFalse(dependency.isStarted());
         assertTimeEquals(0);
-    }
+    }*/
 
     /**
      * Sends the given number of tick events to the model.
@@ -209,5 +210,7 @@ class UnifiedMockDependency implements TimeModel, ClockModel, StopwatchModelList
     }
     @Override
     public void addRunTime(){}
+
+    public void setTime(int time){}
 
 }

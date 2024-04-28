@@ -56,5 +56,20 @@
                 android:text="@string/Increment"/>
 
     </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textholder"
+            android:layout_below="@id/buttons"
+            android:layout_centerHorizontal="true">
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="71dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/enterTime" tools:visibility="visible" android:hint="Enter time"
+                android:textAlignment="center"/>
+    </RelativeLayout>
 
 </RelativeLayout>
